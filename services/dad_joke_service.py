@@ -13,10 +13,11 @@ def get_dad_joke():
     }
 
     try:
-        response    = requests.get(url, headers=headers)# Indexes the 'response'
-        response.raise_for_status()                     # Provides error if something went wrong with 'request'
-        joke_data   = response.json()                   # Indexes the joke
-        return joke_data["joke"]                        # Returns 'joke'
+        response    = requests.get(url, headers=headers)
+        # Provides error response if something went wrong with 'request'
+        response.raise_for_status()
+        joke_data   = response.json()
+        return joke_data["joke"]
     except requests.RequestException as e:
-        print(f"Error getting joke: {e}")
+        print(f"\nError getting joke: {e}")
         return None
